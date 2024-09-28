@@ -1,0 +1,23 @@
+fpath=("$HOME/zsh/functions" $fpath)
+
+load() {
+  autoload -Uz $1
+  zle -N $1
+  if [ "$2" != '' ]; then
+    bindkey $2 $1
+  fi
+}
+
+load fzf-repository '^]'
+load fzf-cd
+load fzf-docker-container-rm
+load fzf-docker-exec
+load fzf-docker-log
+load fzf-git-checkout
+load fzf-git-log
+
+
+{{ if eq .chezmoi.os "darwin" -}}
+alias bell='afplay /System/Library/Sounds/Hero.aiff'
+load notify-done
+{{ end -}}

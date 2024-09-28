@@ -1,0 +1,5 @@
+notify-done() {
+  osascript -e 'display notification "Process is done!" with title "Terminal"'
+  bell
+}
+
