@@ -1,0 +1,5 @@
+# Homebrew
+{{ if eq .chezmoi.os "linux" }}
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{ end }}
+# TOOD: darwin
