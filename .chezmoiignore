@@ -1,1 +1,8 @@
+README.md
 .gitconfig_user
+
+{{ if eq .chezmoi.os "linux" }}
+raycast.rayconfig
+.hammerspoon
+.config/karabiner
+{{ end }}
