@@ -45,4 +45,4 @@ brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
-
+brew "daipeihust/tap/im-select"
