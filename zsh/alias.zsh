@@ -6,7 +6,6 @@ if type "eza" > /dev/null 2>&1; then
   alias eta='eza -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
 fi
 
-alias sed='gsed'
 alias wttr='curl wttr.in/fukuoka'
 alias pbjq="pbpaste | jq . -S | pbcopy"
 
