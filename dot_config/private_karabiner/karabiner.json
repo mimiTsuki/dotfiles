@@ -9,7 +9,7 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "grave_accent_and_tilde",
+                                    "key_code": "japanese_pc_nfer",
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
@@ -21,7 +21,7 @@
                                         }
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "grave_accent_and_tilde" }],
+                                "to_if_alone": [{ "key_code": "japanese_pc_nfer" }],
                                 "type": "basic"
                             },
                             {
@@ -85,43 +85,6 @@
                                 "type": "basic"
                             }
                         ]
-                    },
-                    {
-                        "description": "コマンドキーを単体で押したときに、英数・かなキーを送信する。（左コマンドキーは英数、右コマンドキーはかな） (rev 3)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "left_command",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
-                                "to": [
-                                    {
-                                        "key_code": "left_command",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "japanese_eisuu" }],
-                                "to_if_held_down": [{ "key_code": "left_command" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "right_command",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
-                                "to": [
-                                    {
-                                        "key_code": "right_command",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "japanese_kana" }],
-                                "to_if_held_down": [{ "key_code": "right_command" }],
-                                "type": "basic"
-                            }
-                        ]
                     }
                 ]
             },
@@ -138,14 +101,6 @@
             "name": "Default profile",
             "selected": true,
             "simple_modifications": [
-                {
-                    "from": { "key_code": "japanese_pc_nfer" },
-                    "to": [{ "key_code": "japanese_eisuu" }]
-                },
-                {
-                    "from": { "key_code": "japanese_pc_xfer" },
-                    "to": [{ "key_code": "japanese_kana" }]
-                },
                 {
                     "from": { "key_code": "right_control" },
                     "to": [{ "key_code": "right_command" }]
