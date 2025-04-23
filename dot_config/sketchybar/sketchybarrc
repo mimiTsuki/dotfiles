@@ -1,0 +1,62 @@
+#!/bin/sh
+
+source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
+source "$HOME/.config/sketchybar/styles.sh" # Loads all defined styles
+
+# ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
+
+# Unload the macOS on screen indicator overlay for volume change
+# launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
+
+# Setting up the general bar appearance and default values
+sketchybar --bar     height=39                                         \
+                     color=$BAR_COLOR                                  \
+                     shadow=on                                         \
+                     position=top                                      \
+                     sticky=on                                         \
+                     padding_right=10                                  \
+                     padding_left=10                                   \
+                     corner_radius=0                                   \
+                     y_offset=0                                         \
+                     margin=0                                           \
+                     blur_radius=100                                    \
+                     notch_width=0                                     \
+                                                                       \
+           --default updates=when_shown                                \
+                     icon.font="$FONT:Bold:17.0"                       \
+                     icon.color=$ICON_COLOR                            \
+                     icon.padding_left=$PADDINGS                       \
+                     icon.padding_right=$PADDINGS                      \
+                     label.font="$FONT:Regular:14.0"                   \
+                     label.color=$LABEL_COLOR                          \
+                     label.padding_left=$PADDINGS                      \
+                     label.padding_right=$PADDINGS                     \
+                     padding_right=$PADDINGS                           \
+                     padding_left=$PADDINGS                            \
+                     background.height=30                              \
+                     background.corner_radius=9                        \
+                     popup.background.border_width=2                   \
+                     popup.background.corner_radius=9                  \
+                     popup.background.border_color=$POPUP_BORDER_COLOR \
+                     popup.background.color=$POPUP_BACKGROUND_COLOR    \
+                     popup.background.shadow.drawing=on
+
+sketchybar --add item chevron left \
+           --set chevron icon= label.drawing=off \
+           --add item front_app left \
+           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+           --subscribe front_app front_app_switched 
+
+sketchybar --add item clock right \
+           --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
+           --add item volume right \
+           --set volume script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change \
+
+source "$PLUGIN_DIR/battery.sh"
+
+# Forcing all item scripts to run (never do this outside of sketchybarrc)
+sketchybar --update
+
+echo "sketchybar configuation loaded.."
