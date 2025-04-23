@@ -12,15 +12,8 @@ if [ -e $SCRIPT_DIR/zsh/local.zsh ]; then
   . $SCRIPT_DIR/zsh/local.zsh
 fi
 
-# volta
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-# Flutter
-export PATH="$PATH:$HOME/.pub-cache/bin"
-export PATH="$HOME/fvm/default/bin:$PATH"
-
 # starship
 if which starship > /dev/null; then
   eval "$(starship init zsh)"
 fi
+
